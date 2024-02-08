@@ -122,3 +122,234 @@ and value and returns the sum of the values of objects whose name property start
 
 ```
 <hr/>
+
+
+### Problem 8: Complex reduce
+
+What is the output of the following code?
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const result = numbers.reduce((acc, curr) => {
+if (curr % 2 === 0) {
+acc.even.push(curr);
+} else {
+acc.odd.push(curr);
+}
+return acc;
+}, { odd: [], even: [] });
+console.log(result);
+
+```
+
+### Solution:
+
+``
+<hr/>
+
+
+### Problem 9: : Transforming an Array-Like Object
+
+Create a function that takes an array-like object with numeric keys and transforms it into a proper array. For example, {0: 'a', 1: 'b', 2: 'c', length: 3} should be transformed into ['a','b', 'c'] .
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 10: Unexpected forEach Behavior
+
+The following code is intended to log each number multiplied by 2, but it’s not working as
+expected. Identify and fix the issue.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+numbers.forEach(num => {
+num *= 2;
+});
+console.log(numbers);
+```
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 11: Implement customFilter
+
+Create a function customFilter that mimics the behavior of the JavaScript Array.prototype.filter method. It should not use the built-in filter method. The function should handle cases where the callback function returns truthy or falsy values, not just true or false .
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 12: Analyze Recursive Reduce
+
+The following recursive reduce function is intended to flatten an array of arrays into a single array, but it contains errors. Identify and fix them:
+
+```js
+function flattenArray(arr) {
+return arr.reduce((acc, val) => {
+if (Array.isArray(val)) {
+acc.concat(flattenArray(val));
+} else {
+acc.push(val);
+}
+return acc;
+}, []);
+}
+```
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 13: Chaining Array Methods
+
+What is the output of the following code snippet? Explain the process.
+
+```js
+const data = [1, '2', 3, '4', 5];
+const result = data
+.map(item => parseInt(item))
+.filter(item => !isNaN(item))
+.reduce((acc, item) => acc + item, 0);
+console.log(result);
+```
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 14: Nested Object Transformation
+
+Write a function that takes an array of objects with nested objects and transforms each nested object’s key-value pairs into arrays of [key, value] . Use map and reduce .
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 15: forEach with Objects
+
+Given the following code, what will be logged to the console?
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+Object.keys(obj).forEach(key => {
+obj[key] *= 2;
+});
+console.log(obj);
+```
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 16: Complex Array.from Usage
+
+The following code is intended to create an array of objects from an array-like object, but it doesn’t work as expected. Identify and fix the issues:
+
+```js
+const arrayLike = {0: 'apple', 1: 'banana', 2: 'cherry', length: 3};
+const fruits = Array.from(arrayLike, key => ({name: key}));
+console.log(fruits);
+```
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 17: Multi-level Grouping
+
+Using reduce , write a function that takes an array of objects and groups them by a specified key, and within each group, further groups them by another key. The function should be flexible to work with any keys.
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 18: : Interplay of Map, Filter, and Reduce
+
+Analyze and determine the output of the following complex sequence of map , filter , and reduce :
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6];
+const result = numbers
+.map(num => num * 2)
+.filter(num => num % 3 === 0)
+.reduce((acc, num) => acc + num, 0);
+console.log(result);
+```
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 19: Array-Like Object Operations
+
+Create a function that takes an array-like object and a callback function. This function should behave like the forEach method, applying the callback to each property of the object that represents an array element
+
+### Solution:
+
+```js
+
+```
+<hr/>
+
+
+### Problem 20:  Reduce with Initial Object
+
+The following code is supposed to create an object that counts the occurrences of each string in an array, but it has errors. Fix the code
+
+```js
+const strings = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+const count = strings.reduce((acc, str) => {
+acc[str] = acc[str] ? acc[str]++ : 1;
+return acc;
+}, {});
+console.log(count);
+```
+
+### Solution:
+
+```js
+
+```
+<hr/>
