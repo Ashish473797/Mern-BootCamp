@@ -112,14 +112,20 @@ console.log(newArray);
 
 ### Problem 7: Filtering and Accumulating
 
-Using filter and reduce , write a function that takes an array of objects with properties name
-and value and returns the sum of the values of objects whose name property starts with the letter
-‘a’ or ‘A’.
+Using filter and reduce , write a function that takes an array of objects with properties name and value and returns the sum of the values of objects whose name property starts with the letter ‘a’ or ‘A’.
 
 ### Solution:
 
 ```js
-
+function sumofA(arr){
+    let sum = arr.filter((item) => {
+        return (item.name[0] == 'a' || item.name[0] == 'A');
+    })
+    .reduce((accu, curr) => {
+        return accu + curr.value;
+    }, 0);
+    return sum;
+}
 ```
 <hr/>
 
@@ -139,12 +145,11 @@ acc.odd.push(curr);
 return acc;
 }, { odd: [], even: [] });
 console.log(result);
-
 ```
 
 ### Solution:
 
-``
+`OUTPUT: { odd: [ 1, 3, 5 ], even: [ 2, 4 ] }`
 <hr/>
 
 
@@ -155,7 +160,10 @@ Create a function that takes an array-like object with numeric keys and transfor
 ### Solution:
 
 ```js
-
+function transformInArray(obj){
+    let arr = Array.from(obj);
+    return arr;
+}
 ```
 <hr/>
 
@@ -176,7 +184,11 @@ console.log(numbers);
 ### Solution:
 
 ```js
-
+const numbers = [1, 2, 3, 4, 5];
+numbers.forEach((num, idx) => {
+numbers[idx] = num *= 2;
+});
+console.log(numbers);
 ```
 <hr/>
 
@@ -188,7 +200,15 @@ Create a function customFilter that mimics the behavior of the JavaScript Array.
 ### Solution:
 
 ```js
-
+function customFilter(arr, fun){
+    let tempArr = [];
+    for(let i = 0; i < arr.length; i++){
+        if(fun(arr[i], i)){
+            tempArr.push(arr[i]);
+        }
+    }
+    return tempArr;
+}
 ```
 <hr/>
 
@@ -213,7 +233,16 @@ return acc;
 ### Solution:
 
 ```js
-
+function flattenArray(arr) {
+return arr.reduce((acc, val) => {
+if (Array.isArray(val)) {
+return acc.concat(flattenArray(val));
+} else {
+acc.push(val);
+}
+return acc;
+}, []);
+}
 ```
 <hr/>
 
@@ -233,9 +262,7 @@ console.log(result);
 
 ### Solution:
 
-```js
-
-```
+`OUTPUT: 15`
 <hr/>
 
 
