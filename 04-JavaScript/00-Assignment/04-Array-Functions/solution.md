@@ -273,7 +273,20 @@ Write a function that takes an array of objects with nested objects and transfor
 ### Solution:
 
 ```js
+let arr = [{a: {x: 1,y: 2}}, {b: {z: 3,w: 4}}, {c: {p: 5,q: 6}}];
 
+function transformNestedObjects(arr) {
+  return arr.map(obj => {
+    return Object.keys(obj).reduce((acc, key) => {
+      if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+        acc[key] = Object.entries(obj[key]);
+      } else {
+        acc[key] = obj[key];
+      }
+      return acc;
+    }, {});
+  });
+}
 ```
 <hr/>
 
@@ -293,7 +306,7 @@ console.log(obj);
 ### Solution:
 
 ```js
-
+OUTPUT: { a: 2, b: 4, c: 6 }
 ```
 <hr/>
 
@@ -311,7 +324,9 @@ console.log(fruits);
 ### Solution:
 
 ```js
-
+const arrayLike = {0: 'apple', 1: 'banana', 2: 'cherry', length: 3};
+const fruits = Array.from(arrayLike, (value, key) => ({name: value}));
+console.log(fruits);
 ```
 <hr/>
 
@@ -323,7 +338,39 @@ Using reduce , write a function that takes an array of objects and groups them b
 ### Solution:
 
 ```js
+function groupObjectsByKeys(array, groupByKey, subGroupByKey) {
+    return array.reduce((result, obj) => {
+        const groupKey = obj[groupByKey];
+        const subGroupKey = obj[subGroupByKey];
 
+        // Create the group if it doesn't exist
+        if (!result[groupKey]) {
+            result[groupKey] = {};
+        }
+
+        // Create the sub-group if it doesn't exist
+        if (!result[groupKey][subGroupKey]) {
+            result[groupKey][subGroupKey] = [];
+        }
+
+        // Push the object to the corresponding sub-group
+        result[groupKey][subGroupKey].push(obj);
+
+        return result;
+    }, {});
+}
+
+// Example usage:
+const data = [
+    { category: 'Fruit', type: 'Apple', color: 'Red' },
+    { category: 'Fruit', type: 'Banana', color: 'Yellow' },
+    { category: 'Vegetable', type: 'Carrot', color: 'Orange' },
+    { category: 'Fruit', type: 'Cherry', color: 'Red' },
+    { category: 'Vegetable', type: 'Lettuce', color: 'Green' }
+];
+
+const groupedData = groupObjectsByKeys(data, 'category', 'color');
+console.log(groupedData);
 ```
 <hr/>
 
@@ -343,9 +390,7 @@ console.log(result);
 
 ### Solution:
 
-```js
-
-```
+`OUTPUT: 18`
 <hr/>
 
 
@@ -356,7 +401,27 @@ Create a function that takes an array-like object and a callback function. This 
 ### Solution:
 
 ```js
+let arrLike = {
+    0: 1,
+    1: 2,
+    2: 3,
+    3: 4,
+    4: 5,
+    length: 5,
+}
 
+function arrLikeasForeach(arr, fun){
+    let tempArr = Array.from(arr);
+    for(let i = 0; i < arr.length; i++){
+        fun(tempArr[i], i);
+    }
+}
+
+arrLikeasForeach(arrLike, (item, idx) => {
+    arrLike[idx] = item * 2;
+});
+
+console.log(arrLike);
 ```
 <hr/>
 
@@ -377,6 +442,11 @@ console.log(count);
 ### Solution:
 
 ```js
-
+const strings = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+const count = strings.reduce((acc, str) => {
+acc[str] = acc[str] ? ++acc[str] : 1;
+return acc;
+}, {});
+console.log(count);
 ```
 <hr/>
