@@ -24,7 +24,7 @@ function downloader(url, cb) {
 
 function writeFile(data, cb) {
     // write a dummy impl using setTimeout to show a delay 
-    console.log('Started writing... file', data);
+    console.log('Started writing... file for', data);
     setTimeout(() => {
         console.log('Writing Completed');
         let fileName = 'dummy.txt';
@@ -33,20 +33,20 @@ function writeFile(data, cb) {
 }
 
 
-function uploadFile(fileName, newUrl, cb) {
+function uploadFile(file, newUrl, cb) {
      // write a dummy impl using setTimeout to show a delay 
-     console.log('Started uploading... file', newUrl);
+     console.log('Started uploading... ',file, 'to', newUrl);
      setTimeout(() => {
         console.log('Uploading Completed');
-        let response = 'Success';
-        cb(response);
+        let uploadResponse = 'Success';
+        cb(uploadResponse);
      }, 3000);
 }
 
 // Uses
 downloader('www.google.com', (downloadedData) => {
     writeFile(downloadedData, (fileName) => {
-        uploadFile(fileName, 'www.drive.com', (response) => {
+        uploadFile(fileName, 'google.drive.com', (response) => {
             console.log(response);
         })
     })
