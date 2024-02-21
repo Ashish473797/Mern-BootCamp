@@ -1,12 +1,14 @@
 
-### Easy
+## Easy: Predict the output
 
 #### Question 1
 ```javascript
 let promise = Promise.resolve(3);
 promise.then(value => console.log(value));
 ```
-*What is the output of the code above?*
+`OUTPUT: 3`
+<hr/>
+
 
 #### Question 2
 ```javascript
@@ -15,29 +17,37 @@ let promise = new Promise((resolve, reject) => {
 });
 promise.then(value => console.log(value));
 ```
-*What is the output of the code above?*
+`OUTPUT: Success!`
+<hr/>
+
 
 #### Question 3
 ```javascript
 Promise.reject('Error occurred').catch(err => console.log(err));
 ```
-*What is the output of the code above?*
+`OUTPUT: Error occurred`
+<hr/>
+
 
 #### Question 4
 ```javascript
 let promise = Promise.resolve(1);
 promise.then(value => value + 2).then(value => console.log(value));
 ```
-*What is the output of the code above?*
+`OUTPUT: 3`
+<hr/>
+
 
 #### Question 5
 ```javascript
 Promise.resolve("Resolved").then(console.log);
 Promise.reject("Rejected").catch(console.log);
 ```
-*What is the output of the code above?*
+`OUTPUT: Resolved, Rejected`
+<hr/>
 
-### Hard
+
+## Hard: Predict the output:
 
 #### Question 6
 ```javascript
@@ -47,7 +57,9 @@ let promise = new Promise((resolve, reject) => {
 promise.then(value => console.log(value));
 console.log("After promise");
 ```
-*What is the output of the code above?*
+`OUTPUT: After promise, Resolved!`
+<hr/>
+
 
 #### Question 7
 ```javascript
@@ -56,7 +68,9 @@ Promise.resolve(2)
   .then(value => Promise.resolve(value * 2))
   .then(value => console.log(value));
 ```
-*What is the output of the code above?*
+`OUTPUT: 8`
+<hr/>
+
 
 #### Question 8
 ```javascript
@@ -64,7 +78,9 @@ Promise.reject('Initial Error')
   .catch(err => { throw new Error('New Error'); })
   .catch(err => console.log(err.message));
 ```
-*What is the output of the code above?*
+`OUTPUT: New Error`
+<hr/>
+
 
 #### Question 9
 ```javascript
@@ -73,16 +89,20 @@ async function asyncFunction() {
 }
 asyncFunction().then(console.log);
 ```
-*What is the output of the code above?*
+`OUTPUT: 4`
+<hr/>
+
 
 #### Question 10
 ```javascript
 let promise = Promise.resolve(Promise.resolve('Resolve'));
 promise.then(res => console.log(res));
 ```
-*What is the output of the code above?*
+`OUTPUT: Resolve`
+<hr/>
 
-### Super Hard
+
+## Super Hard: Pridict the output:
 
 #### Question 11
 ```javascript
@@ -90,7 +110,9 @@ let promise1 = Promise.resolve('First');
 let promise2 = Promise.resolve('Second');
 Promise.race([promise1, promise2]).then(value => console.log(value));
 ```
-*What is the output of the code above?*
+`OUTPUT: First`
+<hr/>
+
 
 #### Question 12
 ```javascript
@@ -99,7 +121,9 @@ let promise = new Promise((resolve, reject) => {
 });
 promise.catch(error => console.log(error.message));
 ```
-*What is the output of the code above?*
+`OUTPUT: Error thrown`
+<hr/>
+
 
 #### Question 13
 ```javascript
@@ -113,7 +137,9 @@ async function asyncFunc() {
 asyncFunc();
 console.log("After async function");
 ```
-*What is the output of the code above?*
+`OUTPUT: After async function, Done!`
+<hr/>
+
 
 #### Question 14
 ```javascript
@@ -123,7 +149,9 @@ Promise.all([
   Promise.resolve('Promise 3')
 ]).then(console.log).catch(console.log);
 ```
-*What is the output of the code above?*
+`OUTPUT: Promise 2`
+<hr/>
+
 
 #### Question 15
 ```javascript
@@ -133,4 +161,5 @@ let promise = new Promise((resolve, reject) => {
 });
 promise.then(console.log).catch(console.log);
 ```
-*What is the output of the code above?*
+`OUTPUT: Promise resolved`
+<hr/>
